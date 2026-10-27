@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Hoàng Anh</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        warm: {
+                            50: '#FAF7F2',   
+                            100: '#F3EDE2',  
+                            200: '#E6DBCB',  
+                            300: '#D6C4AD',
+                            400: '#C87D32',  
+                            500: '#B06622',  
+                            600: '#8C4D18',
+                            800: '#2C251E',  
+                            900: '#1C1713',  
+                            950: '#120E0B',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Be Vietnam Pro', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .ambient-glow-warm {
+            background: radial-gradient(circle, rgba(200, 125, 50, 0.15) 0%, rgba(250, 247, 242, 0) 70%);
+        }
+        .dark .ambient-glow-warm {
+            background: radial-gradient(circle, rgba(200, 125, 50, 0.18) 0%, rgba(28, 23, 19, 0) 70%);
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(230, 219, 203, 0.8);
+        }
+        .dark .glass-card-dark {
+            background: rgba(44, 37, 30, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 125, 50, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-warm-50 text-warm-900 dark:bg-warm-900 dark:text-warm-50 min-h-screen selection:bg-warm-400 selection:text-white relative overflow-x-hidden">
+
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] ambient-glow-warm rounded-full pointer-events-none -z-10"></div>
+    <div class="fixed bottom-0 right-0 w-[500px] h-[500px] ambient-glow-warm rounded-full pointer-events-none -z-10"></div>
+
+    <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300 backdrop-blur-md bg-warm-50/80 dark:bg-warm-900/80 border-b border-warm-200/60 dark:border-warm-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            
+            <a href="#hero" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-warm-400 to-amber-500 text-white flex items-center justify-center font-bold text-sm shadow-md shadow-warm-400/20 group-hover:scale-105 transition-transform">
+                    HA
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-sm tracking-tight group-hover:text-warm-400 transition-colors">Nguyễn Hoàng Anh</span>
+                    <span class="text-[10px] text-gray-500 dark:text-warm-300 -mt-1 font-medium">Student Founder • BDU</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-gray-600 dark:text-warm-200">
+                <a href="#about" class="hover:text-warm-400 dark:hover:text-warm-400 transition-colors">Giới Thiệu</a>
+                <a href="#roadmap" class="hover:text-warm-400 dark:hover:text-warm-400 transition-colors">Hành Trình</a>
+                <a href="#skills" class="hover:text-warm-400 dark:hover:text-warm-400 transition-colors">Kỹ Năng</a>
+                <a href="#projects" class="hover:text-warm-400 dark:hover:text-warm-400 transition-colors">Dự Án</a>
+                <a href="#vision" class="hover:text-warm-400 dark:hover:text-warm-400 transition-colors">Tầm Nhìn</a>
+                <a href="#contact" class="hover:text-warm-400 dark:hover:text-warm-400 transition-colors">Liên Hệ</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="p-2 rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-600 dark:text-warm-300 hover:bg-warm-200 dark:hover:bg-warm-700 transition-colors" title="Đổi Chế Độ Sáng/Tối">
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                </button>
+
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-warm-400 hover:bg-warm-500 text-white text-xs font-bold shadow-sm transition-all">
+                    <span>Kết Nối</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </a>
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl bg-warm-100 dark:bg-warm-800 text-gray-700 dark:text-warm-200">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-b border-warm-200 dark:border-warm-800 bg-warm-50/95 dark:bg-warm-900/95 px-4 py-4 space-y-3">
+            <a href="#about" class="block text-sm font-medium hover:text-warm-400">Giới Thiệu</a>
+            <a href="#roadmap" class="block text-sm font-medium hover:text-warm-400">Hành Trình</a>
+            <a href="#skills" class="block text-sm font-medium hover:text-warm-400">Kỹ Năng</a>
+            <a href="#projects" class="block text-sm font-medium hover:text-warm-400">Dự Án</a>
+            <a href="#vision" class="block text-sm font-medium hover:text-warm-400">Tầm Nhìn</a>
+            <a href="#contact" class="block text-sm font-medium hover:text-warm-400">Liên Hệ</a>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-16 space-y-20 max-w-6xl mx-auto px-4 sm:px-6">
+      <style>
+.profile-nav-bar {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 99999;
+    background: rgba(7, 91, 53, 0.92);
+    backdrop-filter: blur(8px);
+    padding: 8px 14px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+.profile-nav-btn {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.2);
+    text-decoration: none !important;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+.profile-nav-btn:hover {
+    background: #ffffff;
+    color: #075b35 !important;
+    transform: translateY(-1px);
+}
+.profile-nav-home {
+    background: #e0a96d;
+    color: #075b35 !important;
+    border: none;
+}
+.profile-nav-home:hover {
+    background: #ffffff;
+    color: #075b35 !important;
+}
+</style>
+
+<div class='profile-nav-bar'>
+    <a href='../../index.html' class='profile-nav-btn profile-nav-home'>🏠 Trang chủ</a>
+    <a href='../M_Hung/file.html' class='profile-nav-btn'>❮ Hồ sơ trước</a>
+    <a href='../Luận/codeprofileDCL.html' class='profile-nav-btn'>Hồ sơ kế tiếp ❯</a>
+</div>
+
+        <section id="hero" class="min-h-[80vh] flex flex-col justify-center items-center text-center pt-6 pb-10 relative">
+            
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-warm-100 dark:bg-warm-800 border border-warm-200 dark:border-warm-700 text-warm-600 dark:text-warm-300 text-xs font-medium mb-6">
+                <span class="w-2 h-2 rounded-full bg-warm-400 animate-pulse"></span>
+                <span>Sinh viên Đại Học Bình Dương (BDU)</span>
+            </div>
+
+            <div class="relative mb-6">
+                <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl p-1 bg-gradient-to-tr from-warm-400 via-amber-500 to-warm-200 shadow-lg">
+                    <img 
+                        src="../H_Anh/picture3/H_anh-picture.jpg" 
+                        alt="Nguyễn Hoàng Anh" 
+                        class="w-full h-full object-cover rounded-[22px] bg-warm-100 dark:bg-warm-800"
+                        onerror="this.src='https://placehold.co/400x400/E6DBCB/2C251E?text=Hoang+Anh'"
+                    />
+                </div>
+                <div class="absolute -bottom-2 -right-2 p-2 rounded-xl bg-warm-400 text-white shadow-md">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </div>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-warm-900 dark:text-warm-50 tracking-tight leading-tight max-w-3xl">
+                Xin chào, Tôi là <span class="text-transparent bg-clip-text bg-gradient-to-r from-warm-400 via-amber-500 to-warm-600">Nguyễn Hoàng Anh</span>
+            </h1>
+
+            <div class="mt-3 text-lg sm:text-2xl font-semibold text-gray-600 dark:text-warm-200 h-8 flex items-center justify-center">
+                <span id="typing-text"></span><span class="typing-cursor text-warm-400"></span>
+            </div>
+
+            <p class="mt-4 text-xs sm:text-base text-gray-500 dark:text-warm-300 max-w-xl leading-relaxed">
+                Đam mê xây dựng sự giao thoa giữa **Thẩm mỹ thiết kế đồ họa** và **Logic công nghệ thông tin**. Định hình tư duy Founder trẻ tuổi đầy khát vọng tại Đại học Bình Dương.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
+                <a href="#contact" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-warm-400 hover:bg-warm-500 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-warm-400/20 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Liên Hệ Ngay</span>
+                </a>
+                <button onclick="copyToClipboard('25050031@student.bdu.edu.vn', 'Email Sinh Viên')" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-white dark:bg-warm-800 hover:bg-warm-100 dark:hover:bg-warm-700 border border-warm-200 dark:border-warm-700 text-warm-900 dark:text-warm-100 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="download" class="w-4 h-4 text-warm-400"></i>
+                    <span>Tải CV / Thông Tin</span>
+                </button>
+            </div>
+
+            <div class="mt-10 flex items-center gap-4 text-gray-400 dark:text-warm-400">
+                <a href="tel:0375133374" class="p-2.5 rounded-xl bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700 hover:text-warm-400 hover:border-warm-400 transition-all" title="Gọi ngay">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                </a>
+                <a href="mailto:25050031@student.bdu.edu.vn" class="p-2.5 rounded-xl bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700 hover:text-warm-400 hover:border-warm-400 transition-all" title="Gửi Email">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                </a>
+                <a href="#contact" class="p-2.5 rounded-xl bg-white dark:bg-warm-800 border border-warm-200 dark:border-warm-700 hover:text-warm-400 hover:border-warm-400 transition-all" title="Địa chỉ">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="scroll-mt-20">
+            <div class="glass-card-light dark:glass-card-dark rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-2.5 h-6 rounded-full bg-warm-400"></div>
+                    <h2 class="text-2xl font-bold tracking-tight">Câu Chuyện & Định Hướng</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4 text-sm text-gray-600 dark:text-warm-200 leading-relaxed">
+                        <p>
+                            Tôi hiện là sinh viên chuyên ngành **Thiết Kế Đồ Họa & Công Nghệ Thông Tin** tại **Trường Đại Học Bình Dương (BDU)**. Với góc nhìn của một Founder tương lai, tôi luôn tìm kiếm cách biến những ý tưởng trên bản vẽ thiết kế thành các sản phẩm công nghệ thực tiễn.
+                        </p>
+                        <p>
+                            Dù đang trong quá trình tích lũy nền tảng chuyên môn, tôi không ngừng thử nghiệm các ý tưởng UI/UX, bộ nhận diện thương hiệu cũng như tìm hiểu tư duy phát triển dự án khởi nghiệp công nghệ.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-warm-100/70 dark:bg-warm-800/80 border border-warm-200/80 dark:border-warm-700/80 text-center">
+                            <span class="block text-2xl font-extrabold text-warm-400">Năm 2</span>
+                            <span class="text-xs text-gray-500 dark:text-warm-300 font-medium">Sinh viên BDU</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-warm-100/70 dark:bg-warm-800/80 border border-warm-200/80 dark:border-warm-700/80 text-center">
+                            <span class="block text-2xl font-extrabold text-warm-400">100%</span>
+                            <span class="text-xs text-gray-500 dark:text-warm-300 font-medium">Tâm huyết học hỏi</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-warm-100/70 dark:bg-warm-800/80 border border-warm-200/80 dark:border-warm-700/80 text-center">
+                            <span class="block text-2xl font-extrabold text-warm-400">03+</span>
+                            <span class="text-xs text-gray-500 dark:text-warm-300 font-medium">Concept thử nghiệm</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-warm-100/70 dark:bg-warm-800/80 border border-warm-200/80 dark:border-warm-700/80 text-center">
+                            <span class="block text-2xl font-extrabold text-warm-400">∞</span>
+                            <span class="text-xs text-gray-500 dark:text-warm-300 font-medium">Ý tưởng Founder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="scroll-mt-20 space-y-8">
+            <div class="flex items-center gap-3">
+                <div class="w-2.5 h-6 rounded-full bg-warm-400"></div>
+                <h2 class="text-2xl font-bold tracking-tight">Cột Mốc & Hành Trình Học Tập</h2>
+            </div>
+
+            <div class="relative border-l-2 border-warm-200 dark:border-warm-700 ml-4 sm:ml-6 space-y-8">
+                
+                <!-- Milestone 1 -->
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-warm-400 border-4 border-warm-50 dark:border-warm-900 group-hover:scale-125 transition-transform"></div>
+                    <div class="glass-card-light dark:glass-card-dark rounded-2xl p-5 shadow-sm space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-warm-400 uppercase tracking-wider">Hiện Tại • 2026</span>
+                            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-warm-100 dark:bg-warm-800 text-warm-600 dark:text-warm-300 font-semibold">BDU Student</span>
+                        </div>
+                        <h3 class="text-base font-bold text-warm-900 dark:text-warm-100">Nghiên Cứu & Phát Triển Dự Án Thử Nghiệm</h3>
+                        <p class="text-xs text-gray-600 dark:text-warm-300 leading-relaxed">
+                            Thực hành thiết kế giao diện ứng dụng (UI/UX) và học nâng cao kỹ thuật phát triển Web Front-End (HTML/CSS/Tailwind). Xây dựng góc nhìn khởi nghiệp Founder.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-warm-300 dark:bg-warm-600 border-4 border-warm-50 dark:border-warm-900 group-hover:scale-125 transition-transform"></div>
+                    <div class="glass-card-light dark:glass-card-dark rounded-2xl p-5 shadow-sm space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-warm-400 uppercase tracking-wider">2024 - 2025</span>
+                            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-warm-100 dark:bg-warm-800 text-warm-600 dark:text-warm-300 font-semibold">Đại Học Bình Dương</span>
+                        </div>
+                        <h3 class="text-base font-bold text-warm-900 dark:text-warm-100">Sinh Viên Chuyên Ngành Thiết Kế Đồ Họa & CNTT</h3>
+                        <p class="text-xs text-gray-600 dark:text-warm-300 leading-relaxed">
+                            Nhập học tại BDU, làm quen với nguyên lý thị giác, tư duy bố cục, phối màu đồ họa và các môn học lập trình căn bản.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="scroll-mt-20 space-y-8">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-2.5 h-6 rounded-full bg-warm-400"></div>
+                    <h2 class="text-2xl font-bold tracking-tight">Kỹ Năng & Công Cụ Nền Tảng</h2>
+                </div>
+                <span class="text-xs text-gray-400 font-medium">Tập trung cốt lõi</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                
+                <div class="glass-card-light dark:glass-card-dark p-5 rounded-2xl shadow-sm space-y-3 hover:border-warm-400 transition-colors">
+                    <div class="p-3 w-fit rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-400">
+                        <i data-lucide="figma" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold">Figma & UI Layouts</h3>
+                    <p class="text-xs text-gray-500 dark:text-warm-300">Phác thảo Wireframe, Thiết kế giao diện ứng dụng và Prototype mượt mà.</p>
+                </div>
+
+                <div class="glass-card-light dark:glass-card-dark p-5 rounded-2xl shadow-sm space-y-3 hover:border-warm-400 transition-colors">
+                    <div class="p-3 w-fit rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-400">
+                        <i data-lucide="palette" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold">Thiết Kế Đồ Họa & Branding</h3>
+                    <p class="text-xs text-gray-500 dark:text-warm-300">Photoshop, nguyên lý màu sắc, thiết kế Logo và Bộ nhận diện thương hiệu.</p>
+                </div>
+
+                <div class="glass-card-light dark:glass-card-dark p-5 rounded-2xl shadow-sm space-y-3 hover:border-warm-400 transition-colors">
+                    <div class="p-3 w-fit rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-400">
+                        <i data-lucide="code" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold">HTML5 / CSS3 / Tailwind</h3>
+                    <p class="text-xs text-gray-500 dark:text-warm-300">Chuyển đổi bản vẽ thiết kế thành trang Web hiển thị responsive tốt trên di động.</p>
+                </div>
+
+                <div class="glass-card-light dark:glass-card-dark p-5 rounded-2xl shadow-sm space-y-3 hover:border-warm-400 transition-colors">
+                    <div class="p-3 w-fit rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-400">
+                        <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold">Tư Duy Sáng Tạo & Founder</h3>
+                    <p class="text-xs text-gray-500 dark:text-warm-300">Nhìn nhận vấn đề dưới góc nhìn người dùng để đề xuất giải pháp sản phẩm phù hợp.</p>
+                </div>
+
+                <div class="glass-card-light dark:glass-card-dark p-5 rounded-2xl shadow-sm space-y-3 hover:border-warm-400 transition-colors">
+                    <div class="p-3 w-fit rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-400">
+                        <i data-lucide="layout" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold">UX Research Căn Bản</h3>
+                    <p class="text-xs text-gray-500 dark:text-warm-300">Khảo sát nhu cầu người dùng, phân tích luồng trải nghiệm người dùng (User Journey).</p>
+                </div>
+
+                <div class="glass-card-light dark:glass-card-dark p-5 rounded-2xl shadow-sm space-y-3 hover:border-warm-400 transition-colors">
+                    <div class="p-3 w-fit rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-400">
+                        <i data-lucide="rocket" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold">Quản Lý Dự Án Nhỏ</h3>
+                    <p class="text-xs text-gray-500 dark:text-warm-300">Chủ động lập kế hoạch tiến độ công việc, làm việc nhóm và thuyết trình ý tưởng.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects" class="scroll-mt-20 space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-2.5 h-6 rounded-full bg-warm-400"></div>
+                    <h2 class="text-2xl font-bold tracking-tight">Dự Án & Thử Nghiệm</h2>
+                </div>
+
+                <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                    <button class="filter-btn active px-3 py-1.5 rounded-xl bg-warm-400 text-white shadow-sm transition-all" data-category="all">Tất Cả</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-xl bg-warm-100 dark:bg-warm-800 text-gray-600 dark:text-warm-200 hover:bg-warm-200 transition-all" data-category="design">Đồ Họa & UI/UX</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-xl bg-warm-100 dark:bg-warm-800 text-gray-600 dark:text-warm-200 hover:bg-warm-200 transition-all" data-category="startup">Ý Tưởng Startup</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projects-grid">
+                
+                <div class="project-card glass-card-light dark:glass-card-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all group cursor-pointer" data-category="design" onclick="openProjectModal('p1')">
+                    <div class="h-44 bg-warm-200 dark:bg-warm-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=600&auto=format&fit=crop" alt="UI Concept App" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-warm-900/80 text-white text-[10px] font-medium backdrop-blur-md">UI/UX Concept</span>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <h3 class="text-base font-bold group-hover:text-warm-400 transition-colors">Ứng Dụng Quản Lý Sinh Viên BDU</h3>
+                        <p class="text-xs text-gray-500 dark:text-warm-300 line-clamp-2">Giao diện quản lý lịch học, điểm số và thông báo sự kiện sinh viên với phong cách tối giản.</p>
+                        <div class="flex items-center justify-between text-[11px] font-semibold text-warm-400 pt-2 border-t border-warm-200/50 dark:border-warm-700/50">
+                            <span>Chi tiết khái niệm</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card-light dark:glass-card-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all group cursor-pointer" data-category="design" onclick="openProjectModal('p2')">
+                    <div class="h-44 bg-warm-200 dark:bg-warm-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600&auto=format&fit=crop" alt="Branding Kit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-warm-900/80 text-white text-[10px] font-medium backdrop-blur-md">Bộ Nhận Diện</span>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <h3 class="text-base font-bold group-hover:text-warm-400 transition-colors">Bộ Thương Hiệu Cá Nhân NHA</h3>
+                        <p class="text-xs text-gray-500 dark:text-warm-300 line-clamp-2">Thiết kế Logo, Namecard, Color Palette đại diện cho tinh thần trẻ trung và hiện đại.</p>
+                        <div class="flex items-center justify-between text-[11px] font-semibold text-warm-400 pt-2 border-t border-warm-200/50 dark:border-warm-700/50">
+                            <span>Chi tiết khái niệm</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass-card-light dark:glass-card-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all group cursor-pointer" data-category="startup" onclick="openProjectModal('p3')">
+                    <div class="h-44 bg-warm-200 dark:bg-warm-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop" alt="Founder Website" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-warm-900/80 text-white text-[10px] font-medium backdrop-blur-md">Startup Idea</span>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <h3 class="text-base font-bold group-hover:text-warm-400 transition-colors">Website Founder Portfolio</h3>
+                        <p class="text-xs text-gray-500 dark:text-warm-300 line-clamp-2">Trang web giới thiệu cá nhân thiết kế theo phong cách Warm Amber tối giản cho sinh viên khởi nghiệp.</p>
+                        <div class="flex items-center justify-between text-[11px] font-semibold text-warm-400 pt-2 border-t border-warm-200/50 dark:border-warm-700/50">
+                            <span>Chi tiết khái niệm</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="vision" class="scroll-mt-20">
+            <div class="glass-card-light dark:glass-card-dark rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-2.5 h-6 rounded-full bg-warm-400"></div>
+                    <h2 class="text-2xl font-bold tracking-tight">Tầm Nhìn & Giá Trị Cốt Lõi</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-5 rounded-2xl bg-warm-100/50 dark:bg-warm-800/50 border border-warm-200/60 dark:border-warm-700/60 space-y-2">
+                        <div class="w-8 h-8 rounded-lg bg-warm-400 text-white flex items-center justify-center font-bold text-sm mb-3">1</div>
+                        <h3 class="text-sm font-bold">Thẩm Mỹ Đồ Họa</h3>
+                        <p class="text-xs text-gray-600 dark:text-warm-300 leading-relaxed">Mọi sản phẩm đều phải truyền tải được cảm xúc và thông điệp qua trải nghiệm thị giác trực quan.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-warm-100/50 dark:bg-warm-800/50 border border-warm-200/60 dark:border-warm-700/60 space-y-2">
+                        <div class="w-8 h-8 rounded-lg bg-warm-400 text-white flex items-center justify-center font-bold text-sm mb-3">2</div>
+                        <h3 class="text-sm font-bold">Tối Ưu Công Nghệ</h3>
+                        <p class="text-xs text-gray-600 dark:text-warm-300 leading-relaxed">Áp dụng công nghệ lập trình hiện đại để tối ưu hóa hiệu năng và tính hữu dụng của giao diện.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-warm-100/50 dark:bg-warm-800/50 border border-warm-200/60 dark:border-warm-700/60 space-y-2">
+                        <div class="w-8 h-8 rounded-lg bg-warm-400 text-white flex items-center justify-center font-bold text-sm mb-3">3</div>
+                        <h3 class="text-sm font-bold">Học Hỏi Liên Tục</h3>
+                        <p class="text-xs text-gray-600 dark:text-warm-300 leading-relaxed">Luôn trong trạng thái lắng nghe phản hồi, cải tiến bản thân từng ngày với tinh thần Founder trẻ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="scroll-mt-20 space-y-8">
+            <div class="flex items-center gap-3">
+                <div class="w-2.5 h-6 rounded-full bg-warm-400"></div>
+                <h2 class="text-2xl font-bold tracking-tight">Kết Nối Với Hoàng Anh</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="space-y-4">
+                    
+                    <div class="glass-card-light dark:glass-card-dark p-5 rounded-2xl flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-400">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-[11px] font-semibold text-gray-400 uppercase">Điện Thoại Direct</p>
+                                <a href="tel:0375133374" class="text-sm font-bold text-warm-900 dark:text-warm-50 hover:text-warm-400 transition-colors">0375133374</a>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('0375133374', 'Số Điện Thoại')" class="p-2 rounded-xl text-gray-400 hover:text-warm-400 hover:bg-warm-100 dark:hover:bg-warm-800 transition-all" title="Sao Chép">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <div class="glass-card-light dark:glass-card-dark p-5 rounded-2xl flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-400">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div class="truncate max-w-[200px] sm:max-w-none">
+                                <p class="text-[11px] font-semibold text-gray-400 uppercase">Email Sinh Viên BDU</p>
+                                <a href="mailto:25050031@student.bdu.edu.vn" class="text-xs sm:text-sm font-bold text-warm-900 dark:text-warm-50 hover:text-warm-400 transition-colors truncate block">25050031@student.bdu.edu.vn</a>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('25050031@student.bdu.edu.vn', 'Email Sinh Viên')" class="p-2 rounded-xl text-gray-400 hover:text-warm-400 hover:bg-warm-100 dark:hover:bg-warm-800 transition-all" title="Sao Chép">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <div class="glass-card-light dark:glass-card-dark p-5 rounded-2xl flex items-center gap-4">
+                        <div class="p-3 rounded-xl bg-warm-100 dark:bg-warm-800 text-warm-400">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-[11px] font-semibold text-gray-400 uppercase">Địa Điểm Học Tập & Làm Việc</p>
+                            <p class="text-sm font-bold">Bình Dương, Việt Nam</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="glass-card-light dark:glass-card-dark p-6 rounded-3xl space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 dark:text-warm-200 mb-1">Tên của bạn</label>
+                        <input type="text" required placeholder="Nhập tên..." class="w-full px-4 py-2.5 rounded-xl bg-warm-50 dark:bg-warm-900 border border-warm-200 dark:border-warm-700 text-xs focus:outline-none focus:border-warm-400 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 dark:text-warm-200 mb-1">Email / Số điện thoại</label>
+                        <input type="text" required placeholder="Nhập email hoặc SĐT..." class="w-full px-4 py-2.5 rounded-xl bg-warm-50 dark:bg-warm-900 border border-warm-200 dark:border-warm-700 text-xs focus:outline-none focus:border-warm-400 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 dark:text-warm-200 mb-1">Lời nhắn</label>
+                        <textarea rows="3" required placeholder="Nội dung lời nhắn..." class="w-full px-4 py-2.5 rounded-xl bg-warm-50 dark:bg-warm-900 border border-warm-200 dark:border-warm-700 text-xs focus:outline-none focus:border-warm-400 transition-colors"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-warm-400 hover:bg-warm-500 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Gửi Lời Nhắn</span>
+                    </button>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-8 border-t border-warm-200 dark:border-warm-800 text-center text-xs text-gray-500 dark:text-warm-400">
+        <p>© 2026 Nguyễn Hoàng Anh • Student Founder Portfolio • Đại Học Bình Dương (BDU)</p>
+    </footer>
+
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card-light dark:glass-card-dark bg-warm-50 dark:bg-warm-900 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative border border-warm-200 dark:border-warm-700">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 p-2 rounded-full bg-warm-100 dark:bg-warm-800 text-gray-500 hover:text-warm-400 transition-colors">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+            
+            <div id="modal-content" class="space-y-3">
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 px-4 py-2.5 rounded-xl bg-warm-900 dark:bg-warm-100 text-white dark:text-warm-900 text-xs font-semibold shadow-xl opacity-0 pointer-events-none translate-y-2 flex items-center gap-2 z-50 transition-all duration-300">
+        <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 dark:text-warm-600"></i>
+        <span id="toast-msg">Đã sao chép!</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const roles = ["Student Founder", "Graphic Design & IT Student", "Aspiring Tech Creator", "BDU Student"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingText = document.getElementById("typing-text");
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typingText.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        typeEffect();
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-warm-400', 'text-white');
+                    b.classList.add('bg-warm-100', 'dark:bg-warm-800', 'text-gray-600', 'dark:text-warm-200');
+                });
+                btn.classList.add('active', 'bg-warm-400', 'text-white');
+                btn.classList.remove('bg-warm-100', 'dark:bg-warm-800', 'text-gray-600', 'dark:text-warm-200');
+
+                const category = btn.getAttribute('data-category');
+                projectCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        const projectsData = {
+            'p1': {
+                title: 'Ứng Dụng Quản Lý Sinh Viên BDU',
+                category: 'UI/UX Concept Design',
+                desc: 'Bản thiết kế giao diện ứng dụng di động dành riêng cho sinh viên Trường Đại Học Bình Dương. Tối ưu trải nghiệm tra cứu thời khóa biểu, xem thông báo khoa và đăng ký hoạt động ngoại khóa.',
+                tags: ['Figma', 'UI/UX Layout', 'BDU Mobile']
+            },
+            'p2': {
+                title: 'Bộ Nhận Diện Thương Hiệu Cá Nhân NHA',
+                category: 'Graphic Design & Branding',
+                desc: 'Bộ hệ thống định danh cá nhân Nguyễn Hoàng Anh bao gồm Logo cách điệu chữ HA, phong cách phối màu Warm Amber & Cream sang trọng, thẻ danh thiếp và mẫu trình bày dự án.',
+                tags: ['Photoshop', 'Brand Identity', 'Graphic Rules']
+            },
+            'p3': {
+                title: 'Website Founder Portfolio',
+                category: 'Startup Concept & Web Dev',
+                desc: 'Dự án trang web cá nhân nằm trọn trong một hệ sinh thái màu ấm thanh lịch, tích hợp đầy đủ tính năng phản hồi người dùng, đổi chế độ Dark/Light Mode và tối ưu chuẩn Responsive.',
+                tags: ['HTML5', 'Tailwind CSS', 'JavaScript']
+            }
+        };
+
+        function openProjectModal(id) {
+            const data = projectsData[id];
+            if (!data) return;
+
+            const contentHtml = `
+                <span class="px-2.5 py-1 rounded-full bg-warm-100 dark:bg-warm-800 text-warm-600 dark:text-warm-300 text-[10px] font-bold uppercase tracking-wider">${data.category}</span>
+                <h3 class="text-xl font-bold text-warm-900 dark:text-warm-50 mt-1">${data.title}</h3>
+                <p class="text-xs text-gray-600 dark:text-warm-300 leading-relaxed">${data.desc}</p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                    ${data.tags.map(t => `<span class="px-2 py-0.5 rounded-md bg-warm-200/60 dark:bg-warm-800 text-warm-800 dark:text-warm-200 text-[11px] font-medium">${t}</span>`).join('')}
+                </div>
+            `;
+
+            document.getElementById('modal-content').innerHTML = contentHtml;
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function copyToClipboard(text, label) {
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast(`Đã sao chép ${label}!`);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast("Cảm ơn bạn! Lời nhắn đã được gửi thành công.");
+            document.getElementById('contact-form').reset();
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            const toastMsg = document.getElementById("toast-msg");
+
+            toastMsg.textContent = message;
+            toast.classList.remove("opacity-0", "pointer-events-none", "translate-y-2");
+            toast.classList.add("opacity-100", "translate-y-0");
+
+            setTimeout(() => {
+                toast.classList.remove("opacity-100", "translate-y-0");
+                toast.classList.add("opacity-0", "pointer-events-none", "translate-y-2");
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
+
